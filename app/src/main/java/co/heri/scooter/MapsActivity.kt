@@ -5,8 +5,8 @@ import android.content.pm.PackageManager
 import android.content.res.Resources
 import android.location.Location
 import android.os.Bundle
+import android.os.Handler
 import android.util.Log
-import android.view.View
 import android.widget.LinearLayout
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
@@ -17,7 +17,6 @@ import com.google.android.gms.maps.*
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MapStyleOptions
 import com.google.android.material.bottomsheet.BottomSheetBehavior
-import com.google.android.material.card.MaterialCardView
 
 
 class MapsActivity : AppCompatActivity(), OnMapReadyCallback, LocationSource.OnLocationChangedListener {
@@ -36,6 +35,8 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, LocationSource.OnL
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_maps)
 
+
+
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this)
 
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
@@ -45,7 +46,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, LocationSource.OnL
 
         // get the bottom sheet view
         // get the bottom sheet view
-        val llBottomSheet = findViewById<MaterialCardView>(R.id.bottom_sheet)
+        val llBottomSheet = findViewById<LinearLayout>(R.id.bottom_sheet)
 
         // init the bottom sheet behavior
         bottomSheetBehavior  =
@@ -81,6 +82,10 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, LocationSource.OnL
             mMap.setMapStyle(
                     MapStyleOptions.loadRawResourceStyle(
                             this, R.raw.map_style))
+
+            val llBottomSheet = findViewById<LinearLayout>(R.id.bottom_sheet)
+            Handler().post(Runnable { mMap.setPadding(0, 0, 0, llBottomSheet.getHeight()) })
+
         } catch (e: Resources.NotFoundException) {
             Log.e("MapsActivity", "Cannot find style.", e)
         }
@@ -195,5 +200,7 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, LocationSource.OnL
             // mMap.addMarker(MarkerOptions().position(myLocation!!).title("It's Me!"))
         }
     }
+
+
 
 }
