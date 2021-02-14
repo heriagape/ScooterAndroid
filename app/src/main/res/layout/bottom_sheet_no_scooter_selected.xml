@@ -27,17 +27,25 @@
 
             <TextView
                 android:id="@+id/textView"
+                style="@style/TextAppearance.MaterialComponents.Headline6"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Ride a Scooter"
-                android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
+                android:text="Ride a Scooter" />
 
             <TextView
                 android:id="@+id/textView2"
+                style="@style/TextAppearance.MaterialComponents.Subtitle2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="$1 to unlock, $0.15 per min"
                 android:textAppearance="@style/TextAppearance.AppCompat.Small" />
+
+            <TextView
+                android:id="@+id/textView3"
+                style="@style/TextAppearance.MaterialComponents.Body2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Hello worlds" />
         </LinearLayout>
 
         <ImageView
