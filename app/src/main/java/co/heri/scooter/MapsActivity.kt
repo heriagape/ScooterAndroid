@@ -7,6 +7,7 @@ import android.location.Location
 import android.os.Bundle
 import android.os.Handler
 import android.util.Log
+import android.view.View
 import android.widget.LinearLayout
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
@@ -52,7 +53,9 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, LocationSource.OnL
         bottomSheetBehavior  =
             BottomSheetBehavior.from(llBottomSheet)
 
-        bottomSheetBehavior.setState(BottomSheetBehavior.STATE_HIDDEN);
+        bottomSheetBehavior.peekHeight = findViewById<View>(R.id.peak_layout).height
+
+//        bottomSheetBehavior.setState(BottomSheetBehavior.STATE_HIDDEN);
 
     }
 
@@ -83,8 +86,8 @@ class MapsActivity : AppCompatActivity(), OnMapReadyCallback, LocationSource.OnL
                     MapStyleOptions.loadRawResourceStyle(
                             this, R.raw.map_style))
 
-            val llBottomSheet = findViewById<LinearLayout>(R.id.bottom_sheet)
-            Handler().post(Runnable { mMap.setPadding(0, 0, 0, llBottomSheet.getHeight()) })
+            val llpeak = findViewById<View>(R.id.peak_layout)
+            Handler().post(Runnable { mMap.setPadding(0, 0, 0, llpeak.height) })
 
         } catch (e: Resources.NotFoundException) {
             Log.e("MapsActivity", "Cannot find style.", e)

@@ -12,8 +12,8 @@
         <item name="android:windowActionBar">false</item>
         <item name="android:windowNoTitle">true</item>
         <item name="android:statusBarColor">@android:color/transparent</item>
-
-
+        <item name="android:fontFamily">@font/euclid_circular</item>
+        <item name="fontFamily">@font/euclid_circular</item>
 
     </style>
 
